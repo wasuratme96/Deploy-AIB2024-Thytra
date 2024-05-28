@@ -8,6 +8,7 @@ from utils.pipeline import thyroid_image_classification
 
 st.header('Thytra (Thyroid Ultrasound Image Classification for Disease Diagnosis)')
 classifier = thyroid_image_classification(model_name="agent593/Thyroid-Ultrasound-Image-Classification-ViTModel")
+st.sidebar.image(logo.jpg)
 st.sidebar.write('### Enter image to classify')
 option = st.sidebar.radio('', ['Use a validation image', 'Use your own image'])
 valid_images = glob.glob('data/test/*')
