@@ -6,6 +6,7 @@ import glob
 import PIL
 from PIL import Image
 
+
 st.header('Thytra (Thyroid Ultrasound Image Classification for Disease Diagnosis)')
 
 st.sidebar.write('### Enter image to classify')
