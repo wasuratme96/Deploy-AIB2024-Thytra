@@ -3,12 +3,15 @@ import streamlit as st
 import pandas as pd
 import glob
 import PIL
+import os
 from PIL import Image
 from utils.pipeline import thyroid_image_classification
 
 st.header('Thytra (Thyroid Ultrasound Image Classification for Disease Diagnosis)')
 classifier = thyroid_image_classification(model_name="agent593/Thyroid-Ultrasound-Image-Classification-ViTModel")
-st.sidebar.image(logo.jpg)
+st.sidebar.image('image/logo.jpg')
+st.sidebar.write('Ai Builders ปีที่ 4 กลุ่ม loyal-coyotes')
+st.sidebar.write('จัดทำโดย บุณยาพร ชัยมงคลทรัพย์')
 st.sidebar.write('### Enter image to classify')
 option = st.sidebar.radio('', ['Use a validation image', 'Use your own image'])
 valid_images = glob.glob('data/test/*')
@@ -16,9 +19,11 @@ valid_images.sort()
 
 if option == 'Use a validation image':
     st.sidebar.write('### Select a validation image')
-    fname = st.sidebar.selectbox('', valid_images)
-    if fname:
-        image = Image.open(fname)
+    filenames = [os.path.basename(fname) for fname in valid_images]  # Get only the filenames
+    selected_filename = st.sidebar.selectbox('', filenames)
+    if selected_filename:
+        image_path = os.path.join('data/test', selected_filename)  # Reconstruct the full path
+        image = Image.open(image_path)
         st.sidebar.image(image)
         st.session_state['result'] = image
 
@@ -34,3 +39,4 @@ else:
 if st.session_state['result']:
     st.image(st.session_state['result'])
     st.text(classifier(st.session_state['result']))
+st.sidebar.image('image/aib.png')
