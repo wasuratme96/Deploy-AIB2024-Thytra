@@ -40,3 +40,4 @@ if st.session_state['result']:
     st.image(st.session_state['result'])
     st.text(classifier(st.session_state['result']))
 st.sidebar.image('image/aib.png')
+st.sidebar.write('โครงการ AI Builders จัดขึ้นจากความร่วมมือระหว่าง VISTEC, AIResearch, Central Retail Digital และมหาวิทยาลัยมหิดลเพื่อพัฒนาองค์ความรู้ทางด้านวิทยาศาสตร์ข้อมูล (Data Science) และปัญญาประดิษฐ์ (Artificial Intelligence / AI) ให้กับน้องๆระดับมัธยมต้น-ปลาย ที่สนใจอยากเรียนรู้และพัฒนาโครงงานที่ใช้ทักษะในด้านนี้เพื่อประยุกต์ใช้จริงในชีวิตประจำวัน ในปี 2024 เราได้รับการสนับสนุนจาก บพค., AWS, DELL, VISAI, กลุ่ม OSK Artificial Intelligence, และ Krungsri Nimble')
